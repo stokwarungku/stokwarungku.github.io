@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#1d5fd1">
+<title>Stok Warung - Kasir dan Pencatatan Stok</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231d5fd1'/%3E%3Cpath d='M14 28l5-12h26l5 12v4H14z' fill='%23fff'/%3E%3Crect x='17' y='34' width='30' height='14' fill='%23fff'/%3E%3Crect x='28' y='38' width='8' height='10' fill='%231d5fd1'/%3E%3C/svg%3E">
+<!-- Gaya darurat: tetap tampil rapi walau style.css gagal termuat -->
+<style>html,body{margin:0;background:#f1f5fb;color:#12233f;font-family:"Inter","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}[hidden]{display:none!important}*{box-sizing:border-box}</style>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<noscript><p style="padding:1em;font:600 15px sans-serif">Aktifkan JavaScript di browser untuk memakai Stok Warung.</p></noscript>
+<div id="bootMsg" style="padding:1.2em;font:600 15px/1.5 sans-serif;text-align:center;color:#164aa6">Memuat Stok Warung&hellip;<br><span style="font-weight:400;color:#5b6b85">Jika halaman ini tetap kosong, file script.js tidak ikut termuat. Buka index.html dari folder yang lengkap (index.html, style.css, fonts.css, script.js), atau pakai file stok-warung-satu-file.html.</span></div>
+<div id="toasts" aria-live="polite"></div>
+
+<!-- Halaman masuk / setup -->
+<div id="auth" class="auth" hidden>
+  <section class="auth-hero">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#fff" fill-opacity=".18"/><path d="M12 27l5-12h30l5 12v4H12z" fill="#fff"/><rect x="15" y="33" width="34" height="16" fill="#fff"/><rect x="27" y="37" width="10" height="12" fill="#1d5fd1"/></svg>
+    <h1>Stok Warung</h1>
+    <p>Aplikasi kasir dan pencatatan stok untuk warung dan toko kelontong. Data tersimpan di perangkat ini.</p>
+    <ul>
+      <li>Kasir eceran dan grosir dengan nota cetak</li>
+      <li>Stok otomatis per dus, renceng, sachet, pcs</li>
+      <li>Laporan harian dan bulanan, keuntungan kotor</li>
+      <li>Login pemilik dan kasir</li>
+    </ul>
+  </section>
+  <section class="auth-box"><div class="auth-card" id="authCard"></div></section>
+</div>
+
+<!-- Aplikasi -->
+<div id="app" hidden>
+  <div id="demoBar" class="demo-bar" hidden>MODE DEMO: data contoh, terpisah dari data asli toko</div>
+  <header class="top">
+    <div class="top-in">
+      <a class="brand" href="#dashboard">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#fff" fill-opacity=".2"/><path d="M12 27l5-12h30l5 12v4H12z" fill="#fff"/><rect x="15" y="33" width="34" height="16" fill="#fff"/><rect x="27" y="37" width="10" height="12" fill="#1d5fd1"/></svg>
+        <span id="brandName">Stok Warung</span>
+      </a>
+      <nav class="nav" id="nav" aria-label="Menu utama"></nav>
+      <div class="who">
+        <span class="chip" id="whoChip"></span>
+        <button class="btn" data-act="logout" type="button">Keluar</button>
+      </div>
+      <button class="burger" id="burger" data-act="nav-toggle" type="button" aria-label="Menu"><i></i></button>
+    </div>
+  </header>
+  <main id="view"></main>
+</div>
+
+<!-- Modal -->
+<div id="overlay" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
+
+<!-- Area cetak -->
+<div id="printArea"></div>
+
+<input type="file" id="fileRestore" accept=".json,application/json" hidden>
+<datalist id="dlSatuan"><option value="pcs"><option value="sachet"><option value="botol"><option value="bungkus"><option value="kg"><option value="liter"><option value="butir"><option value="kaleng"></datalist>
+<datalist id="dlGrosir"><option value="dus"><option value="renceng"><option value="karton"><option value="pak"><option value="lusin"><option value="bal"><option value="karung"><option value="tray"></datalist>
+
+<script src="script.js"></script>
+</body>
+</html>
