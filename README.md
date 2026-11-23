@@ -1,17 +1,6 @@
 # Stok Warung
 
 Aplikasi kasir dan pencatatan stok untuk warung / toko kelontong.
-HTML + CSS + JavaScript biasa (tanpa library, tanpa internet, tanpa instalasi). Data tersimpan di browser (localStorage).
-
-## Cara menjalankan di Windows
-
-**Cara 1 (paling mudah)**
-1. Klik kanan file ZIP, pilih **Extract All**.
-2. Buka folder hasil ekstrak, klik dua kali **index.html** (terbuka di Chrome / Edge).
-
-**Cara 2 (lewat VS Code)**
-1. Ekstrak ZIP, buka VS Code, pilih **File > Open Folder** lalu pilih folder `stok-warung`.
-2. (Opsional) pasang ekstensi **Live Server**, klik kanan `index.html` lalu **Open with Live Server**.
 
 > Penting: data tersimpan per alamat. `index.html` yang dibuka langsung (file://) dan yang dibuka lewat Live Server (http://127.0.0.1:5500) punya **penyimpanan terpisah**. Pilih satu cara dan pakai terus. Untuk pindah cara atau pindah komputer, pakai **Backup** lalu **Pulihkan**.
 
